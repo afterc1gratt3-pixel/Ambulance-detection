@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,239 +12,258 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  padding: 24px;
   font-family: Arial, sans-serif;
   background: #071426;
   color: white;
-  padding: 24px 16px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
 }
 
 header {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 header h1 {
-  color: #55c9ff;
-  font-size: 25px;
-  margin-bottom: 8px;
+  color: #38bdf8;
+  font-size: 28px;
 }
 
-header p {
-  color: #91a9c5;
+.subtitle {
+  color: #94a3b8;
   font-size: 13px;
-}
-
-.dashboard {
-  max-width: 480px;
-  margin: auto;
+  letter-spacing: 2px;
 }
 
 .panel {
   background: #10243c;
-  border: 1px solid #24415e;
-  border-radius: 18px;
-  padding: 20px;
-  margin-bottom: 18px;
-  text-align: center;
+  border: 1px solid #203b59;
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 18px;
+  color: #7dd3fc;
+  margin-top: 0;
 }
 
 .status {
-  color: #ffcc55;
+  color: #facc15;
+  margin: 15px 0;
   font-weight: bold;
-  margin: 12px 0;
+}
+
+button {
+  border: none;
+  border-radius: 9px;
+  padding: 13px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.detect-btn {
+  background: #0284c7;
+  color: white;
+}
+
+.reset-btn {
+  background: #334155;
+  color: white;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.traffic-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  flex-wrap: wrap;
 }
 
 .traffic-light {
-  background: #17202d;
-  border: 4px solid #34465a;
-  border-radius: 35px;
-  width: 120px;
-  padding: 16px;
-  margin: 20px auto;
+  background: #020817;
+  border: 3px solid #334155;
+  border-radius: 25px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .light {
-  width: 76px;
-  height: 76px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
-  margin: 12px auto;
-  background: #343c47;
-  border: 3px solid #4c5a68;
+  border: 4px solid #475569;
+  background: #1e293b;
   cursor: pointer;
   transition: 0.2s;
 }
 
-.light.active.red {
-  background: #ff3434;
-  box-shadow: 0 0 25px #ff3434;
+.light.red.active {
+  background: #ef4444;
+  box-shadow: 0 0 25px #ef4444;
 }
 
-.light.active.yellow {
-  background: #ffd43b;
-  box-shadow: 0 0 25px #ffd43b;
+.light.yellow.active {
+  background: #facc15;
+  box-shadow: 0 0 25px #facc15;
 }
 
-.light.active.green {
-  background: #20dc79;
-  box-shadow: 0 0 25px #20dc79;
+.light.green.active {
+  background: #22c55e;
+  box-shadow: 0 0 25px #22c55e;
 }
 
-button {
-  width: 100%;
-  border: none;
-  border-radius: 12px;
-  padding: 15px;
-  margin-top: 10px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.detect {
-  background: #168bd2;
-  color: white;
-}
-
-.reset {
-  background: #263b54;
-  color: white;
-}
-
-.hint {
-  color: #a9bfd8;
-  font-size: 13px;
-  line-height: 1.7;
+.instruction {
+  text-align: center;
+  color: #cbd5e1;
+  margin-top: 20px;
 }
 
 .log {
-  text-align: left;
-  color: #a9bfd8;
+  background: #020817;
+  border-radius: 10px;
+  padding: 15px;
+  min-height: 100px;
+  max-height: 180px;
+  overflow-y: auto;
+  color: #94a3b8;
   font-size: 13px;
   line-height: 1.8;
-  min-height: 45px;
-  overflow-wrap: anywhere;
 }
 
-footer {
+.footer {
   text-align: center;
-  color: #627b98;
-  font-size: 11px;
+  color: #64748b;
+  font-size: 12px;
   margin-top: 25px;
+}
+
+@media (max-width: 500px) {
+  body {
+    padding: 14px;
+  }
+
+  header h1 {
+    font-size: 22px;
+  }
+
+  .light {
+    width: 65px;
+    height: 65px;
+  }
 }
 </style>
 </head>
 
 <body>
+<div class="container">
 
 <header>
-  <h1>🚑 AMBULANCE CONTROL</h1>
-  <p>AI SMART TRAFFIC LIGHT SIMULATION</p>
+  <h1>🚑 AMBULANCE TRAFFIC CONTROL</h1>
+  <div class="subtitle">SMART CITY TRAFFIC MANAGEMENT SYSTEM</div>
 </header>
 
-<main class="dashboard">
+<section class="panel">
+  <h2>AI DETECTION SYSTEM</h2>
 
-  <section class="panel">
-    <h2>AI DETECTION SYSTEM</h2>
-    <div class="status" id="aiStatus">
-      ● WAITING FOR AI DETECTION
-    </div>
+  <div id="aiStatus" class="status">
+    ● WAITING FOR AMBULANCE
+  </div>
 
-    <button class="detect" onclick="detectAmbulance()">
-      SIMULATE AI DETECTION
-    </button>
+  <button class="detect-btn" onclick="detectAmbulance()">
+    SIMULATE AI DETECTION
+  </button>
 
-    <p class="hint">
-      กดปุ่มเพื่อจำลองว่า AI ตรวจพบรถพยาบาล
-    </p>
-  </section>
+  <button class="reset-btn" onclick="resetSystem()">
+    RESET SYSTEM
+  </button>
+</section>
 
-  <section class="panel">
-    <h2>TRAFFIC LIGHT</h2>
+<section class="panel">
+  <h2>TRAFFIC LIGHT CONTROL</h2>
 
+  <div class="traffic-area">
     <div class="traffic-light">
-      <div class="light active red"
-           id="red"
-           onclick="changeLight('red')"></div>
+      <button id="red" class="light red active"
+        onclick="changeLight('red')" aria-label="Red light"></button>
 
-      <div class="light"
-           id="yellow"
-           onclick="changeLight('yellow')"></div>
+      <button id="yellow" class="light yellow"
+        onclick="changeLight('yellow')" aria-label="Yellow light"></button>
 
-      <div class="light"
-           id="green"
-           onclick="changeLight('green')"></div>
+      <button id="green" class="light green"
+        onclick="changeLight('green')" aria-label="Green light"></button>
     </div>
 
-    <h3 id="lightStatus">RED LIGHT</h3>
-
-    <p class="hint" id="instruction">
-      ระบบกำลังรอสัญญาณจาก AI
-    </p>
-
-    <button class="reset" onclick="resetSystem()">
-      RESET SYSTEM
-    </button>
-  </section>
-
-  <section class="panel">
-    <h3>📋 SYSTEM LOG</h3>
-    <div class="log" id="log">
-      System started.<br>
-      Traffic light: RED.
+    <div>
+      <h2 id="lightStatus">RED LIGHT</h2>
+      <p style="color:#94a3b8">CURRENT SIGNAL STATUS</p>
     </div>
-  </section>
+  </div>
 
-</main>
+  <div id="instruction" class="instruction">
+    Waiting for AI detection...
+  </div>
+</section>
 
-<footer>
-  AMBULANCE TRAFFIC CONTROL PROJECT
-  <br>SIMULATION ONLY
-</footer>
+<section class="panel">
+  <h2>SYSTEM LOG</h2>
+  <div id="systemLog" class="log">
+    System initialized.<br>
+    Waiting for ambulance detection...
+  </div>
+</section>
+
+<div class="footer">
+  AMBULANCE TRAFFIC CONTROL | DEMONSTRATION SIMULATION
+  <br><br>
+  This is a screen-based simulation, not a real traffic control system.
+</div>
+
+</div>
 
 <script>
 let currentLight = "red";
 let detected = false;
 
 function addLog(message) {
-  const log = document.getElementById("log");
-  const time = new Date().toLocaleTimeString("th-TH");
+  const log = document.getElementById("systemLog");
+  const time = new Date().toLocaleTimeString();
 
-  log.innerHTML =
-    time + " - " + message + "<br>" + log.innerHTML;
+  log.innerHTML += "<br>[" + time + "] " + message;
+  log.scrollTop = log.scrollHeight;
 }
 
 function detectAmbulance() {
   detected = true;
 
   document.getElementById("aiStatus").textContent =
-    "⚠ AMBULANCE DETECTED!";
+    "● AMBULANCE DETECTED (SIMULATION)";
 
-  document.getElementById("aiStatus").style.color =
-    "#ffd43b";
+  document.getElementById("aiStatus").style.color = "#22c55e";
 
   document.getElementById("instruction").textContent =
-    "พบรถพยาบาลแล้ว! แตะไฟแดงเพื่อเริ่มเปลี่ยนสถานะ";
+    "Detection simulated. You can now select any traffic light.";
 
-  addLog("AI detected an ambulance.");
+  addLog("Ambulance detection simulated.");
 }
 
 function changeLight(color) {
   if (!detected) {
     document.getElementById("instruction").textContent =
-      "กรุณารอ AI ตรวจพบรถพยาบาลก่อน";
-    return;
-  }
+      "Please simulate AI detection first.";
 
-  const next = {
-    red: "yellow",
-    yellow: "green",
-    green: "green"
-  };
-
-  if (color !== next[currentLight]) {
-    document.getElementById("instruction").textContent =
-      "กรุณาแตะไฟตามลำดับ แดง → เหลือง → เขียว";
     return;
   }
 
@@ -261,21 +279,14 @@ function changeLight(color) {
     color.toUpperCase() + " LIGHT";
 
   document.getElementById("instruction").textContent =
-    color === "green"
-      ? "GREEN LIGHT ACTIVATED"
-      : "แตะไฟสีเหลืองเพื่อเปลี่ยนเป็นไฟเขียว";
+    color.toUpperCase() + " LIGHT ACTIVATED";
 
   addLog("Traffic light changed to " + color.toUpperCase() + ".");
-
-  if (color === "green") {
-    document.getElementById("instruction").textContent =
-      "การจำลองเปลี่ยนเป็นไฟเขียวสำเร็จ";
-  }
 }
 
 function resetSystem() {
-  currentLight = "red";
   detected = false;
+  currentLight = "red";
 
   document.querySelectorAll(".light").forEach(light => {
     light.classList.remove("active");
@@ -284,18 +295,17 @@ function resetSystem() {
   document.getElementById("red").classList.add("active");
 
   document.getElementById("aiStatus").textContent =
-    "● WAITING FOR AI DETECTION";
+    "● WAITING FOR AMBULANCE";
 
-  document.getElementById("aiStatus").style.color =
-    "#ffcc55";
+  document.getElementById("aiStatus").style.color = "#facc15";
 
   document.getElementById("lightStatus").textContent =
     "RED LIGHT";
 
   document.getElementById("instruction").textContent =
-    "ระบบกำลังรอสัญญาณจาก AI";
+    "Waiting for AI detection...";
 
-  addLog("System reset. Traffic light: RED.");
+  addLog("System reset. Waiting for detection.");
 }
 </script>
 
